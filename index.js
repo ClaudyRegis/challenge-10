@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generatePage = require('./src/page-template');
+const Manager = require("./tests/Manager.test");
+const Engineer = require("./tests/Engineer.test");
 
 //const pageHTML = generatePage(name, github);
 
@@ -75,12 +77,12 @@ Add a New Project
     {
       type: 'confirm',
       name: 'confirmAddProject',
-      message: 'Would you like to add an Engineer, add a Intern, or are you finished adding employees?',
-      choices: ['Add Engineer', 'Add Intern', 'I am finished adding employees']
-      
+      message: 'Would you like to enter another project?',
+      default: false
     }
 
   ])
+
   .then(projectData => {
     portfolioData.projects.push(projectData);
     if (projectData.confirmAddProject) {
@@ -92,43 +94,3 @@ Add a New Project
 
 };
 
-
-                               
-  
-
-    
-     
-  
-  
-promptUser()
-  .then(promptProject)
-  .then(portfolioData => {
-    return generatePage(portfolioData);
-  })
-  .then(pageHTML => {
-    return writeFile(pageHTML);
-  })
-  .then(writeFileResponse => {
-    console.log(writeFileResponse);
-    return copyFile();
-  })
-  .then(copyFileResponse => {
-    console.log(copyFileResponse);
-  })
-  .catch(err => {
-    console.log(err);
-
-
-
-
-
-
-
-
-    fs.writeFile('./dist/index.html', pageHTML, err => {
-      if (err) throw new Error(err);
-
-     console.log('Page created! Check out index.html in this directory to see it!');
-     
-    });
-  });

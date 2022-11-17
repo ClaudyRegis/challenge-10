@@ -12,11 +12,11 @@ class Manager extends Employee {
     }
 
     getRole() {
-        return 'Role: Manager'
+        return 'Role: Intern'
     }
 }
 
-expect(manager.name).toEqual("Jay");
-    expect(manager.id).toBe("889945");
+expect(intern.name).toEqual("Jazmine");
+    expect(intern.id).toBe("767007");
 
 module.exports = Manager;
